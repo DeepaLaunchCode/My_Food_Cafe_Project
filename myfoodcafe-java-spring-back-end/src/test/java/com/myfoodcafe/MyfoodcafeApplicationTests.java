@@ -1,10 +1,10 @@
-package com.myfoodcafe_java_spring_back_end;
+package com.myfoodcafe;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MyfoodcafeJavaSpringBackEndApplicationTests {
+class MyfoodcafeApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,13 +1,13 @@
-package com.myfoodcafe_java_spring_back_end;
+package com.myfoodcafe;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MyfoodcafeJavaSpringBackEndApplication {
+public class MyfoodcafeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MyfoodcafeJavaSpringBackEndApplication.class, args);
+		SpringApplication.run(MyfoodcafeApplication.class, args);
 	}
 
 }
