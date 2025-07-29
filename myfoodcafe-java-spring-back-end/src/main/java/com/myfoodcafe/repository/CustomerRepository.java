@@ -1,7 +1,11 @@
 package com.myfoodcafe.repository;
 
-import com.myfoodcafe.model.Customer;
+import com.myfoodcafe.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CustomerRepository extends JpaRepository<Customer, Integer> {
+import java.util.Optional;
+
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
+    // Method to find a customer by their unique email
+    Optional<Customer> findByEmail(String email);
 }
