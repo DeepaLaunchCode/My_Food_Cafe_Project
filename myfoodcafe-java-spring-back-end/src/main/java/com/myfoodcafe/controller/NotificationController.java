@@ -21,7 +21,8 @@ public class NotificationController {
     @PostMapping("/send-sms")
     public ResponseEntity<GenericResponse> sendSms(@RequestParam String to, @RequestBody String message) {
         notificationService.sendSms(to, message);
-        return ResponseEntity.ok(new GenericResponse(true, "SMS sending process initiated."));
+        // Corrected: Added 'null' as the third argument for the 'data' field.
+        return ResponseEntity.ok(new GenericResponse(true, "SMS sending process initiated.", null));
     }
 
     @GetMapping
