@@ -37,5 +37,5 @@ public class Customer {
     // A customer can have many reservations
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @ToString.Exclude // Avoid recursion in toString()
-    private List<Reservation> reservations;
+    private List<Reservation> reservation;
 }

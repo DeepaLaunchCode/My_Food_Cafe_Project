@@ -1,6 +1,7 @@
 package com.myfoodcafe.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
@@ -9,20 +10,23 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
+@Table(name = "reservation")
 @Data
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id"
+)
 public class Reservation {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Link to the Customer table
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY) // Or EAGER if you want to load Customer immediately
     @JoinColumn(name = "customer_id", nullable = false)
-    @JsonIgnore
-    @ToString.Exclude
+    @ToString.Exclude // Prevents recursive toString() calls
     private Customer customer;
 
-    // These fields remain
     private LocalDate reservationDate;
     private LocalTime reservationTime;
     private int numberOfGuests;
