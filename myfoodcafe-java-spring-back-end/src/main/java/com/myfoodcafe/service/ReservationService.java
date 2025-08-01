@@ -1,15 +1,20 @@
 package com.myfoodcafe.service;
 
+import com.myfoodcafe.dto.CustomerDTO;
 import com.myfoodcafe.dto.ReservationRequest;
+import com.myfoodcafe.dto.ReservationResponseDTO;
 import com.myfoodcafe.entity.Customer;
 import com.myfoodcafe.entity.Reservation;
 import com.myfoodcafe.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ReservationService {
@@ -26,7 +31,37 @@ public class ReservationService {
     // 1. Inject the EmailService
     @Autowired
     private EmailService emailService;
+    @Value("${frontend.url}")
+    private String frontendBaseUrl; // Inject the base URL for your frontend application
+    // Base URL for your frontend application
 
+
+    @Transactional(readOnly = true)
+    public Optional<ReservationResponseDTO> getReservationById(Long id) {
+        return reservationRepository.findById(id)
+                .map(this::mapToReservationResponseDTO); // Map the entity to a DTO
+    }
+
+    // --- Private helper method to map Entity to DTO ---
+    private ReservationResponseDTO mapToReservationResponseDTO(Reservation reservation) {
+        // Create and populate the CustomerDTO first
+        CustomerDTO customerDTO = new CustomerDTO();
+        // This is safe because the transaction is still open here
+        customerDTO.setId(reservation.getCustomer().getId());
+        customerDTO.setName(reservation.getCustomer().getName());
+        customerDTO.setEmail(reservation.getCustomer().getEmail());
+        customerDTO.setPhone(reservation.getCustomer().getPhone());
+
+        // Create and populate the main response DTO
+        ReservationResponseDTO dto = new ReservationResponseDTO();
+        dto.setId(reservation.getId());
+        dto.setReservationDate(reservation.getReservationDate());
+        dto.setReservationTime(reservation.getReservationTime());
+        dto.setNumberOfGuests(reservation.getNumberOfGuests());
+        dto.setCustomer(customerDTO); // Set the nested DTO
+
+        return dto;
+    }
     public Reservation createReservation(ReservationRequest request) {
         // Find or create the customer
         Customer customer = customerService.findOrCreateCustomer(
@@ -64,8 +99,9 @@ public class ReservationService {
         try {
             String emailSubject = "Your MyFoodCafe Reservation is Confirmed!";
             // Construct the base URL for your frontend application
-            String baseUrl = "http://localhost:3000"; // Adjust this to your actual frontend URL
-            String manageReservationLink = String.format("%s/manage-reservation?id=%d", baseUrl, savedReservation.getId());
+            //String baseUrl = frontendBaseUrl; // Adjust this to your actual frontend URL
+            String cleanBaseUrl = frontendBaseUrl.endsWith("/") ? frontendBaseUrl.substring(0, frontendBaseUrl.length() - 1) : frontendBaseUrl;
+            String manageReservationLink = String.format("%s/manage-reservation?id=%d", cleanBaseUrl, savedReservation.getId());
 
 
             String emailBody = String.format(
@@ -96,9 +132,7 @@ public class ReservationService {
     }
 
     // New: Get Reservation by ID
-    public Optional<Reservation> getReservationById(Long id) {
-        return reservationRepository.findById(id);
-    }
+
 
     // New: Update Reservation
     public Reservation updateReservation(Long id, ReservationRequest request) {
@@ -200,13 +234,9 @@ public class ReservationService {
         }
         reservationRepository.deleteById(id);
     }
-
-    // New: Get Reservations by Customer Email
-    public List<Reservation> getReservationsByCustomerEmail(String email) {
-        List<Reservation> reservations = reservationRepository.findByCustomerEmail(email);
-        if (reservations.isEmpty()) {
-            throw new RuntimeException("No reservations found for email: " + email);
-        }
-        return reservations;
-    }
-}
+    @Transactional(readOnly = true)
+    public List<ReservationResponseDTO> getReservationsByCustomerEmail(String email) {
+        return reservationRepository.findByCustomerEmail(email).stream()
+                .map(this::mapToReservationResponseDTO)
+                .collect(Collectors.toList());
+    }}

@@ -2,4 +2,12 @@ package com.myfoodcafe.repository;
 
 import com.myfoodcafe.entity.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
-public interface ReservationRepository extends JpaRepository<Reservation, Long> {}
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface ReservationRepository extends JpaRepository<Reservation, Long> {
+    // New: Find reservations by customer email
+    List<Reservation> findByCustomerEmail(String email);
+}
