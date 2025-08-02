@@ -1,17 +1,18 @@
 package com.myfoodcafe.service;
 
-import com.myfoodcafe.dto.CustomerDTO;
 import com.myfoodcafe.dto.ReservationRequest;
-import com.myfoodcafe.dto.ReservationResponseDTO;
 import com.myfoodcafe.entity.Customer;
 import com.myfoodcafe.entity.Reservation;
 import com.myfoodcafe.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import java.time.format.DateTimeFormatter;
+import com.myfoodcafe.service.EmailService;
+import com.myfoodcafe.dto.ReservationResponseDTO;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.format.DateTimeFormatter;
+import com.myfoodcafe.dto.CustomerDTO;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
