@@ -1,0 +1,574 @@
+{
+	"info": {
+		"_postman_id": "220ba546-e209-4a1c-86f4-e8ad2b7f0b60",
+		"name": "MyFoodCafe API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45985058",
+		"_collection_link": "https://deepa-6776862.postman.co/workspace/Deepa's-Workspace~ad1c7a24-0d5e-4ffb-8588-90ad01fec8fd/collection/45985058-220ba546-e209-4a1c-86f4-e8ad2b7f0b60?action=share&source=collection_link&creator=45985058"
+	},
+	"item": [
+		{
+			"name": "Menu",
+			"item": [
+				{
+					"name": "Get All Menu Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/menu",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"menu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Menu Items-Render",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://myfoodcafe-backend.onrender.com/api/menu",
+							"protocol": "https",
+							"host": [
+								"myfoodcafe-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"menu"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Place a New Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerName\": \"John Doe\",\n    \"customerEmail\": \"john.doe@example.com\",\n    \"customerPhone\": \"1234567890\",\n    \"cardNumber\": \"1234567890123456\",\n    \"expiryDate\": \"12/25\",\n    \"cvv\": \"123\",\n    \"totalAmount\": 22.98,\n    \"items\": [\n        {\n            \"itemName\": \"Burger\",\n            \"quantity\": 1,\n            \"price\": 9.99\n        },\n        {\n            \"itemName\": \"Pizza\",\n            \"quantity\": 1,\n            \"price\": 12.99\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Place a New Order-online API-render.com",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerName\": \"John Doe\",\n    \"customerEmail\": \"john.doe@example.com\",\n    \"customerPhone\": \"1234567890\",\n    \"cardNumber\": \"1234567890123456\",\n    \"expiryDate\": \"12/25\",\n    \"cvv\": \"123\",\n    \"totalAmount\": 22.98,\n    \"items\": [\n        {\n            \"itemName\": \"Burger\",\n            \"quantity\": 1,\n            \"price\": 9.99\n        },\n        {\n            \"itemName\": \"Pizza\",\n            \"quantity\": 1,\n            \"price\": 12.99\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://myfoodcafe-backend.onrender.com/api/orders",
+							"protocol": "https",
+							"host": [
+								"myfoodcafe-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reservations",
+			"item": [
+				{
+					"name": "Create a Table Reservation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Jane Smith\",\n    \"email\": \"jane.smith@example.com\",\n    \"phone\": \"0987654321\",\n    \"reservationDate\": \"2025-12-24\",\n    \"reservationTime\": \"19:30:00\",\n    \"numberOfGuests\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/reservation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reservation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Table Reservation-online API-render.com",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Jane Smith\",\n    \"email\": \"jane.smith@example.com\",\n    \"phone\": \"0987654321\",\n    \"reservationDate\": \"2025-12-24\",\n    \"reservationTime\": \"19:30:00\",\n    \"numberOfGuests\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://myfoodcafe-backend.onrender.com/api/reservation",
+							"protocol": "https",
+							"host": [
+								"myfoodcafe-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"reservation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Reservation by email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/reservation/customer/sonaliforamit@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reservation",
+								"customer",
+								"sonaliforamit@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Reservation by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/reservation/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reservation",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Reservation by id --online API-render.com",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://myfoodcafe-backend.onrender.com/api/reservation/8",
+							"protocol": "https",
+							"host": [
+								"myfoodcafe-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"reservation",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ManageReservations",
+			"item": [
+				{
+					"name": "2. Read Reservation by ID Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://myfoodcafe-backend.onrender.com/api/reservation/1",
+							"protocol": "https",
+							"host": [
+								"myfoodcafe-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"reservation",
+								"1"
+							]
+						},
+						"description": "Retrieves the details of a specific reservation. \n\n**Action Required:** Replace the `1` in the URL with a valid reservation ID obtained from the 'Create Reservation' request."
+					},
+					"response": []
+				},
+				{
+					"name": "3. Update Reservation Copy",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Jane Doe\",\n    \"email\": \"jane.doe@example.com\",\n    \"phone\": \"+15551234567\",\n    \"reservationDate\": \"2024-10-21\",\n    \"reservationTime\": \"20:00:00\",\n    \"numberOfGuests\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://myfoodcafe-backend.onrender.com/api/reservation/1",
+							"protocol": "https",
+							"host": [
+								"myfoodcafe-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"reservation",
+								"1"
+							]
+						},
+						"description": "Updates an existing reservation. \n\n**Action Required:** Replace the `1` in the URL with the ID of the reservation you want to update."
+					},
+					"response": []
+				},
+				{
+					"name": "4. Delete Reservation Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://myfoodcafe-backend.onrender.com/api/reservation/1",
+							"protocol": "https",
+							"host": [
+								"myfoodcafe-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"reservation",
+								"1"
+							]
+						},
+						"description": "Deletes a reservation by its ID.\n\n**Action Required:** Replace the `1` in the URL with the ID of the reservation you wish to delete."
+					},
+					"response": []
+				},
+				{
+					"name": "Read Reservations by Customer Email Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/reservation/customer/jane.doe@example.com",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reservation",
+								"customer",
+								"jane.doe@example.com"
+							]
+						},
+						"description": "Retrieves a list of all reservations associated with a specific customer's email address."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Get All Reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/reviews",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Reviews Copy-online API-render.com",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://myfoodcafe-backend.onrender.com/api/reviews",
+							"protocol": "https",
+							"host": [
+								"myfoodcafe-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a New Review",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sam Wilson\",\n    \"message\": \"The pasta was absolutely amazing! Best I've ever had.\",\n    \"rating\": 5,\n    \"image\":\"sam.jpg\"\n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/reviews",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a New Review-online API-render.com",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sam Wilson\",\n    \"message\": \"The pasta was absolutely amazing! Best I've ever had.\",\n    \"rating\": 5,\n    \"image\":\"sam.jpg\"\n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://myfoodcafe-backend.onrender.com/api/reviews",
+							"protocol": "https",
+							"host": [
+								"myfoodcafe-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notifications",
+			"item": [
+				{
+					"name": "Get All Notifications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/notifications",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Notifications-online API-render.com",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://myfoodcafe-backend.onrender.com/api/notifications",
+							"protocol": "https",
+							"host": [
+								"myfoodcafe-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Enquiry-contact-us",
+			"item": [
+				{
+					"name": "Add a New Enquiry",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sam Wilson\",\n    \"message\": \"The pasta was absolutely amazing! Best I've ever had.\",\n    \"rating\": 5,\n    \"image\":\"sam.jpg\"\n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/reviews",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a New Enquiry-online API-render.com",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sam Wilson\",\n    \"message\": \"The pasta was absolutely amazing! Best I've ever had.\",\n    \"rating\": 5,\n    \"image\":\"sam.jpg\"\n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://myfoodcafe-backend.onrender.com/api/reviews",
+							"protocol": "https",
+							"host": [
+								"myfoodcafe-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
