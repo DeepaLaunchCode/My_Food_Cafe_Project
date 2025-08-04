@@ -31,7 +31,7 @@ public class DataSeeder implements CommandLineRunner {
                 createMenuItem("Fries", "Crispy french fries.", 3.99, "Sides", "fries.jpg"),
                 createMenuItem("Soda", "Refreshing soda.", 1.99, "Drinks", "soda.jpg"),
                 createMenuItem("Chicken Wings", "Spicy chicken wings.", 11.99, "Starters", "wings.jpg"),
-                createMenuItem("Coffee", "Energetic espresso.", 1.99, "Drinks", "coffee.jpeg")
+                createMenuItem("Coffee", "Energetic espresso.", 1.99, "Drinks", "coffee.jpg")
         );
         menuItemRepository.saveAll(menuItems);
         System.out.println("Loaded " + menuItems.size() + " menu items into the database.");
