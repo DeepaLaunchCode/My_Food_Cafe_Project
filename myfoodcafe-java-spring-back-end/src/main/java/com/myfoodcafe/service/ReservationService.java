@@ -102,7 +102,8 @@ public class ReservationService {
             // Construct the base URL for your frontend application
             //String baseUrl = frontendBaseUrl; // Adjust this to your actual frontend URL
             String cleanBaseUrl = frontendBaseUrl.endsWith("/") ? frontendBaseUrl.substring(0, frontendBaseUrl.length() - 1) : frontendBaseUrl;
-            String manageReservationLink = String.format("%s/manage-reservation?id=%d", cleanBaseUrl, savedReservation.getId());
+            //String manageReservationLink = String.format("%s/manage-reservation?id=%d", cleanBaseUrl, savedReservation.getId());
+            String manageReservationLink = cleanBaseUrl;
 
 
             String emailBody = String.format(
